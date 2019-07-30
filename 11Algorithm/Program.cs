@@ -6,49 +6,23 @@ namespace _11Algorithm {
 
 	class Program {
 
-		int T = 0;
-		int N = 0;
-
-		ArrayList arrayList = new ArrayList();
-
 		static void Main() {
-			Program program = new Program();
+			long N = long.Parse(Console.ReadLine());
+			int[] array = new int[N+1];
 
-			program.GetData();
-			program.CalculaterData();
-		}
+			array[1] = 0;
 
-		void GetData() {
-			T = int.Parse(Console.ReadLine());
-			for(int i = 0; i < T; i++) {
-				arrayList.Add(int.Parse(Console.ReadLine()));
-			}
-		}
-
-		void CalculaterData()
-		{
-			for(int i = 0; i < T; i++) {
-				Console.WriteLine(string.Empty + RecFunc((int)arrayList[i]));
-			}
-		}
-
-		int RecFunc(int N)
-		{
-			ulong temp = 3;
-			int k = 1;
-			int Ntimes = 3;
-			if (N < 3) {
-				return 1;
+			for(int i = 2; i <= N; i++) {
+				array[i] = array[i - 1] + 1;
+				if(i%2 == 0) {
+					array[i] = (int) MathF.Min(array[i], array[i / 2] + 1);
+				}
+				if(i%3 == 0) {
+					array[i] = (int) MathF.Min(array[i], array[i / 3] + 1);
+				}
 			}
 
-			while (N > Ntimes) {
-				while (temp >= (ulong) k * 3)
-					k++;
-				temp += (ulong) k;
-				Ntimes++;
-			}
-
-			return k;
+			Console.WriteLine(array[N]);
 		}
 	}
 }
