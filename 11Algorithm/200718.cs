@@ -146,3 +146,26 @@ https://www.acmicpc.net/problem/15552
 참고 사이트
 https://jaeho0613.tistory.com/39
 */
+
+using System;
+using System.Text;
+using System.IO;
+
+class MainClass {
+    public static void Main (string[] args) {
+        StringBuilder sb = new StringBuilder();
+        string[] data;
+
+        int maxCase = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < maxCase; i++) {
+            data=Console.ReadLine().Split();
+
+            sb.Append(int.Parse(data[0])+int.Parse(data[1]) + "\n");
+        }
+
+        Console.WriteLine(sb);
+    }
+}
+
+
